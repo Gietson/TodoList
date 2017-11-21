@@ -1,10 +1,57 @@
-﻿form {
+﻿md-sidenav {
+  width: 260px;
+}
+
+.md-sidenav-left md-divider {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.md-sidenav-left .layout-padding, .layout-padding > * {
+  padding: 0;
+}
+.md-secondary {
+   min-width: 0;
+  min-height: 0;
+}
+
+
+/*html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+ul {
+  list-style: none;
+}
+.menu {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px;
+  width: 36px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+md-toolbar h1 {
+  margin: auto;
+  position: relative;
+}
+
+md-padding {
+  margin
+}*/
+
+/*form {
   outline: 0;
   height: 36px;
   margin-top: 5%;
   border: 3px solid #3b3b3b;
-}
-input[type="text"] {
+}*/
+/*input[type="text"] {
   outline: 0;
   width: 55%;
   height: 32px;
@@ -44,4 +91,4 @@ input[type="checkbox"] {
 }
 .completed {
   text-decoration: line-through;
-}
+}*/

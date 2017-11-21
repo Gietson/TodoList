@@ -19,4 +19,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\app\assets\svg\" />
+    <Folder Include="wwwroot\app\components\sidenav\" />
+  </ItemGroup>
+
 </Project>

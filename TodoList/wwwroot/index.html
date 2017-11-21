@@ -4,22 +4,214 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible content=IE-edge"/>
   <meta name="vieport" content="width=device-width, initial-scale=1"/>
+  <base href="/">
   <title>Todo List</title>
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/styles.css"/>
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/index.js"></script>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/styles.css" />
+
 </head>
-<body>
-<div class="container">
+<body  ng-app="app" ng-controller="mainCtrl">
+
+<!--<md-toolbar layout="row" layout-align="center">
+  <md-button class="menu" hide-gt-sm ng-click="ul.toggleTodo()" aria-label="Show todo groups">
+    <md-icon md-svg-icon="menu"></md-icon>
+  </md-button>
+  <h2> Todo List</h2>
+</md-toolbar>-->
+  
+  
+  
+<div ng-include="'components/sidenav/sidenav.html'"></div>
+  
+<div layout="column" style="height:100%;" ng-cloak="" class="sidenav">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Todo list</h1>
+      </md-toolbar>
+      <md-content layout-padding="">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md="">
+          Close Sidenav Left
+        </md-button>
+        <md-list>
+          <md-subheader class="md-no-sticky">
+            Private todo lists
+          </md-subheader>
+          <md-list-item ng-repeat="todo in privateTodoLists" ng-click="getTodoList($event)">
+            <p> {{ todo }} </p>
+          </md-list-item>
+          <md-divider></md-divider>
+          
+          <md-subheader class="md-no-sticky">Public todo lists</md-subheader>
+          <md-list-item ng-repeat="todo in publicTodoLists" ng-click="doPrimaryAction($event)">
+            <p> {{ todo }} </p>
+            
+            <md-button class="md-secondary" ng-click="doSecondaryAction($event)">+</md-button>
+            
+
+          </md-list-item>
+        </md-list>
+
+
+          <!--This sidenav is locked open on your device. To go back to the default behavior,
+    narrow your display.-->
+
+      </md-content>
+
+    </md-sidenav>
+
+    <md-content flex="" layout-padding="">
+
+      <div layout="column" layout-align="top center">
+        <p>
+          The left sidenav will 'lock open' on a medium (=960px wide) device.
+        </p>
+        <p>
+          The right sidenav will focus on a specific child element.
+        </p>
+
+        <div>
+          <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
+            Toggle left
+          </md-button>
+        </div>
+
+          
+      </div>
+
+    </md-content>
+
+  </section>
+
+</div>
+  
+  
+  
+  
+  
+
+  
+<!--<div flex layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+  <md-content class="md-padding">
+    
+    <form ng-submit="addTodo()">
+      <md-input-container class="md-block">
+        <label>What do you need to do today?</label>
+        <input md-maxlength="30" required md-no-asterisk name="message" ng-model="message">
+        <div ng-messages="message.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The message must be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <md-button type="submit" class="md-fab" aria-label="Add todo">
+          <md-icon md-svg-icon="add"></md-icon>
+        </md-button>
+      </md-input-container>
+    </form>
+
+    <ul>
+      <li ng-repeat="item in items">
+
+        <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">
+                <md-checkbox ng-model="item.active" aria-label="Todo Checkbox">
+                  {{item.message}}
+                </md-checkbox>
+              </span>
+            </md-card-title-text>
+          </md-card-title>
+
+        </md-card>
+
+
+      </li>
+    </ul>
+
+
+  </md-content>
+</div>-->
+<!--<form ng-submit="addTodo()">
+  <div layout layout-align-gt-sm="center center">
+    <md-input-container class="md-block">
+    <label>What do you need to do today?</label>
+    <input md-maxlength="30" required md-no-asterisk name="message" ng-model="message">
+    <div ng-messages="message.$error">
+      <div ng-message="required">This is required.</div>
+      <div ng-message="md-maxlength">The message must be less than 30 characters long.</div>
+    </div>
+  </div>
+  </md-input-container>
+  <md-input-container>
+    <md-button type="submit" class="md-fab" aria-label="Add todo items">
+      <md-icon md-svg-icon="add"></md-icon>
+    </md-button>
+  </md-input-container>
+  </div>
+</form>-->
+
+
+<!--<div class="container">
   <h1>Things I've Gotta Get Done</h1>
   <ul id="list-items"></ul>
   <form class="add-items">
     <input type="text" class="form-control" id="todo-list-item" placeholder="What do you need to do today?">
     <button class="add" type="submit">Add to List</button>
   </form>
-</div>
+</div>-->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+<script src="bower_components/angular/angular.min.js"></script>
+<!--<script src="bower_components/angular-resource/angular-resource.min.js"></script>-->
+<!-- <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<!--<script src="bower_components/angular-messages/angular-messages.min.js"></script>-->
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+
+-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="app/app.js"></script>
+<script src="js/index.js"></script>
+<script src="app/services/dataService.js"></script>
+<!--<script src="app/main/main.controller.js"></script>
+<script src="app/main/main.js"></script>-->
+<!--<script src="app/app.js"></script>
+<script src="app/main/main.controller.js"></script>
+<script src="app/main/main.js"></script>-->
 
 </body>
 </html>
